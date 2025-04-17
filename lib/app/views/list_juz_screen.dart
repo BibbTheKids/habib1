@@ -42,9 +42,9 @@ class _ListJuzScreenState extends State<ListJuzScreen> with AutomaticKeepAliveCl
         }
         return ListView.builder(
           padding: EdgeInsets.all(16),
-          itemCount: homeController.surahs.length,
+          itemCount: homeController.surahsFromJuz.length,
           itemBuilder: (context, index) {
-            final surah = homeController.surahs[index] as Map<String, dynamic>;
+            final surah = homeController.surahsFromJuz[index] as Map<String, dynamic>;
             return Container(
               margin: EdgeInsets.only(bottom: 16),
               child: Card(
@@ -58,12 +58,23 @@ class _ListJuzScreenState extends State<ListJuzScreen> with AutomaticKeepAliveCl
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                     child: Row(
                       children: [
-                        CircleAvatar(
-                          radius: 24,
-                          backgroundColor: Color(0xFF00695C),
+                        Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage("assets/image/list.png"),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          alignment: Alignment.center,
                           child: Text(
                             surah['number'].toString(),
-                            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         SizedBox(width: 16),
@@ -71,13 +82,20 @@ class _ListJuzScreenState extends State<ListJuzScreen> with AutomaticKeepAliveCl
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                surah['englishName'] ?? '',
-                                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [Text(
+                                  surah['englishName'] ?? '',
+                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                                ),
+                                  Text('${surah['numberOfAyahs']} Ayat | ${surah['revelationType']}' ?? '', textAlign: TextAlign.left,)
+                                ],
                               ),
+                              
                               Text(
                                 surah['name'] ?? '',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color: Colors.black54),
+                                style: TextStyle(fontSize: 18
+                                    , fontWeight: FontWeight.w300, color: Colors.black),
                               ),
                             ],
                           ),

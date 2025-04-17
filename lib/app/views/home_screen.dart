@@ -45,12 +45,23 @@ class HomeScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
                     child: Row(
                       children: [
-                        CircleAvatar(
-                          radius: 24,
-                          backgroundColor: Color(0xFF00695C),
+                        Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage("assets/image/list.png"),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          alignment: Alignment.center,
                           child: Text(
                             '$juzNumber',
-                            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black, // pastikan kontras dengan gambar
+                            ),
                           ),
                         ),
                         SizedBox(width: 16),

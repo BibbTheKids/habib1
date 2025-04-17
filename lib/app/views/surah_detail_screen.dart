@@ -40,9 +40,9 @@ class SurahDetailScreen extends StatelessWidget {
         }
         return ListView.builder(
           padding: EdgeInsets.all(16),
-          itemCount: homeController.surahs.length,
+          itemCount: homeController.ayahsFromSurah.length,
           itemBuilder: (context, index) {
-            final ayah = homeController.surahs[index] as Map<String, dynamic>;
+            final ayah = homeController.ayahsFromSurah[index] as Map<String, dynamic>;
             return Container(
               margin: EdgeInsets.only(bottom: 16),
               child: Card(

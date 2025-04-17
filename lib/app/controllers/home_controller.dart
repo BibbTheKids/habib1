@@ -5,16 +5,18 @@ class HomeController extends GetxController {
   var isLoading = false.obs;
   var surahs = [].obs;
   var error = ''.obs;
+  var surahsFromJuz = [].obs;
+  var ayahsFromSurah = [].obs;
 
   Future<void> fetchJuzData(int juzNumber) async {
-    surahs.clear();
+    surahsFromJuz.clear();
     error.value = '';
     try {
       isLoading.value = true;
       final response = await ApiService.fetchJuz(juzNumber);
       final data = response['data'] as Map<String, dynamic>;
       final surahsMap = data['surahs'] as Map<String, dynamic>;
-      surahs.value = surahsMap.values.toList();
+      surahsFromJuz.value = surahsMap.values.toList();
     } catch (e) {
       error.value = e.toString();
     } finally {
@@ -22,8 +24,9 @@ class HomeController extends GetxController {
     }
   }
 
+
   Future<void> fetchCombinedSurahData(int surahNumber) async {
-    surahs.clear();
+    ayahsFromSurah.clear();
     error.value = '';
     try {
       isLoading.value = true;
@@ -52,11 +55,12 @@ class HomeController extends GetxController {
           'audioSecondary': arabicAyah['audioSecondary'],
         });
       }
-      surahs.value = combinedAyahs;
+      ayahsFromSurah.value = combinedAyahs;
     } catch (e) {
       error.value = e.toString();
     } finally {
       isLoading.value = false;
     }
   }
+
 }

@@ -19,19 +19,7 @@ class SplashScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.3),
-                ),
-                child: Icon(
-                  Icons.book,
-                  size: 80,
-                  color: Colors.white,
-                ),
-              ),
+              Image.asset("assets/image/icon.png"),
               SizedBox(height: 30),
               Text(
                 'MyQuran',
