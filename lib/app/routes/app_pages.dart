@@ -1,11 +1,15 @@
 import 'package:get/get.dart';
-import '../bindings/splash_binding.dart';
+
 import '../bindings/home_binding.dart';
-import '../views/splash_screen.dart';
+import '../bindings/splash_binding.dart';
+import '../modules/login_screen/bindings/login_screen_binding.dart';
+import '../modules/login_screen/views/login_screen_view.dart';
 import '../views/home_screen.dart';
 import '../views/list_juz_screen.dart';
+import '../views/splash_screen.dart';
 import '../views/surah_detail_screen.dart';
-import 'app_routes.dart';
+
+part 'app_routes.dart';
 
 class AppPages {
   static final pages = [
@@ -28,6 +32,11 @@ class AppPages {
       name: AppRoutes.listSurah,
       page: () => SurahDetailScreen(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: Routes.LOGIN_SCREEN,
+      page: () => const LoginScreenView(),
+      binding: LoginScreenBinding(),
     ),
   ];
 }

@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:quranapp/app/routes/app_pages.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../services/api_service.dart';
 
 class HomeController extends GetxController {
@@ -7,6 +11,14 @@ class HomeController extends GetxController {
   var error = ''.obs;
   var surahsFromJuz = [].obs;
   var ayahsFromSurah = [].obs;
+
+  void logout() async{
+    await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    Get.offAllNamed(AppRoutes.LOGIN_SCREEN);
+  }
 
   Future<void> fetchJuzData(int juzNumber) async {
     surahsFromJuz.clear();

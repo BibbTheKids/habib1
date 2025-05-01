@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quranapp/app/routes/app_pages.dart';
 import '../controllers/home_controller.dart';
-import '../routes/app_routes.dart';
+// import '../routes/app_routes.dart';
 
 class ListJuzScreen extends StatefulWidget {
   @override

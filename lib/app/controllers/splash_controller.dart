@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'dart:async';
-import '../routes/app_routes.dart';
+
+import 'package:quranapp/app/routes/app_pages.dart';
+// import '../routes/app_routes.dart';
 
 class SplashController extends GetxController {
   @override
